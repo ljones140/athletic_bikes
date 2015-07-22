@@ -16,6 +16,7 @@ describe DockingStation do
   end
 
   it 'expects one bike to enter after docking' do
-    bike = subject.dock(Bike.new)
+    subject.dock(Bike.new)
+    bike = subject.release_bike
   end
 end

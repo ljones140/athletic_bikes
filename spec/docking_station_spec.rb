@@ -15,7 +15,7 @@ describe DockingStation do
     expect(subject).to respond_to(:dock).with(1).argument
   end
 
-  it 'expects one bike to enter after docking' do
+  it 'expects one bike to enter after docking and to be equal to released bike' do
     subject.dock(Bike.new)
     bike = subject.release_bike
   end

@@ -12,7 +12,10 @@ describe DockingStation do
   end
 
   it 'docks bikes' do
-    expect(subject).to respond_to :dock
+    expect(subject).to respond_to(:dock).with(1).argument
   end
 
+  it 'expects one bike to enter after docking' do
+    bike = subject.dock(Bike.new)
+  end
 end

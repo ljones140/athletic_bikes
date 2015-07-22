@@ -7,8 +7,12 @@ describe DockingStation do
     end
   end
 
-
   it 'releases bike' do
     expect(subject).to respond_to :release_bike
   end
+
+  it 'docks bikes' do
+    expect(subject).to respond_to :dock
+  end
+
 end

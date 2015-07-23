@@ -39,6 +39,12 @@ describe DockingStation do
     end
   end
 
+  it "changes capacity" do
+    random_number = rand(1..100)
+    subject.capacity = random_number
+    expect(subject.capacity).to eq random_number
+  end
+
 
 
 end

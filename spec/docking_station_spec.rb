@@ -6,11 +6,7 @@ describe DockingStation do
     expect(subject).to respond_to :release_bike
   end
 
-  it "responds to empty" do
-    expect(subject).to respond_to :empty?
-  end
-
-  it "responds to empty" do
+  it "responds to dock" do
     expect(subject).to respond_to(:dock).with(1).argument
   end
 
@@ -20,9 +16,7 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
-  it "is empty by default" do
-    expect(subject).to be_empty
-  end
+
 
   describe "#release_bike" do
     it "raises an error when there are no bikes" do

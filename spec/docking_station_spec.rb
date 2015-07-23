@@ -16,7 +16,15 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
+  it "checks capacity" do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
 
+  it "allows capacity to be specified at initialization" do
+    random_number = rand(1..100)
+    station = DockingStation.new(random_number)
+    expect(station.capacity).to eq(random_number)
+  end
 
   describe "#release_bike" do
     it "raises an error when there are no bikes" do
@@ -31,8 +39,6 @@ describe DockingStation do
     end
   end
 
-  it "checks capacity" do
-    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
-  end
+
 
 end

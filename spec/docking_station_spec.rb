@@ -26,19 +26,6 @@ describe DockingStation do
     expect(station.capacity).to eq(random_number)
   end
 
-  describe "#release_bike" do
-    it "raises an error when there are no bikes" do
-      expect { subject.release_bike }.to raise_error 'No bikes available'
-    end
-  end
-
-  describe "#dock" do
-    it "raises error when full" do
-      subject.capacity.times{subject.dock(Bike.new)}
-      expect {subject.dock(Bike.new)}.to raise_error 'Docking station full'
-    end
-  end
-
   it "changes capacity" do
     random_number = rand(1..100)
     subject.capacity = random_number
@@ -46,5 +33,28 @@ describe DockingStation do
   end
 
 
+  describe "#release_bike" do
+
+    it "raises an error when no bikes" do
+      expect { subject.release_bike }.to raise_error "No bikes available"
+    end
+
+    it "raises error when attempt to release broken bike" do
+      bike = Bike.new
+      bike.report_broken
+      station = DockingStation.new
+      station.dock(bike)
+      expect {station.release_bike}. to raise_error "No bikes available"
+    end
+
+  end
+
+  describe "#dock" do
+
+    it "raises error when full" do
+      subject.capacity.times{subject.dock(Bike.new)}
+      expect {subject.dock(Bike.new)}.to raise_error "Docking station full"
+    end
+  end
 
 end

@@ -5,11 +5,6 @@ describe Bike do
     expect(subject).to respond_to :working?
   end
 
-
-  # it "report bike is broken" do
-  #   expect(subject).to respond_to :report_broken
-  # end
-
   it "returns true" do
     bike = Bike.new
     bike.report_broken

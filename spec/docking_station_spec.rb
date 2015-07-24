@@ -1,6 +1,8 @@
 require 'docking_station'
 
 describe DockingStation do
+  #let(:generic_bike) {double (:bike)}
+  let(:working_bike) {double(:bike, working?: true)}
 
   it "responds to release bike" do
     expect(subject).to respond_to :release_bike
@@ -11,7 +13,8 @@ describe DockingStation do
   end
 
   it "releases working bikes" do
-    subject.dock Bike.new
+    # subject.dock generic_bike.stub(:working?).and_return(:true)
+    subject.dock working_bike
     bike = subject.release_bike
     expect(bike).to be_working
   end

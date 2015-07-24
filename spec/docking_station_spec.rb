@@ -1,7 +1,7 @@
 require 'docking_station'
 
 describe DockingStation do
-  #let(:generic_bike) {double(:bike)}
+  let(:generic_bike) {double(:bike)}
   let(:working_bike){double(:bike, working?: true)}
   let(:broken_bike){double(:bike, working?: false)}
   it "responds to release bike" do
@@ -13,8 +13,8 @@ describe DockingStation do
   end
 
   it "releases working bikes" do
-    #subject.dock(generic_bike.stub (:working?) {:true})
-    subject.dock working_bike
+    allow(generic_bike).to receive(:working?){true}
+    subject.dock generic_bike
     bike = subject.release_bike
     expect(bike).to be_working
   end
@@ -56,13 +56,6 @@ describe DockingStation do
       expect {subject.dock(:vehicle)}.to raise_error "Docking station full"
     end
   end
-
-  # describe "#greet" do
-  #   it "says hello" do
-  #     bike = generic_bike.stub(:hello)
-  #     expect(subject.greet_bike(bike)).to eq ("hello")
-  #   end
-  # end
 
 
 end

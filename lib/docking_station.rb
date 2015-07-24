@@ -10,8 +10,12 @@ class DockingStation
     @capacity = capacity
   end
 
-  def release_bike
+  def select_working_bikes
     @working_bikes = @bikes.select{|bike| bike.working?}
+  end
+
+  def release_bike
+    select_working_bikes
     raise "No bikes available" if @working_bikes.empty?
     @working_bikes.pop
   end

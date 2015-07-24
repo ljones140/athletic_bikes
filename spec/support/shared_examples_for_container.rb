@@ -28,6 +28,17 @@ shared_examples_for Container do
     end
   end
 
+  describe '#remove_vehicle' do
+    before(:each) {subject.add_vehicle :vehicle}
 
+    it 'returns a vehicle' do
+      expect(subject.remove_vehicle).to eq :vehicle
+    end
+
+    it 'expect to be empty' do
+      subject.remove_vehicle
+      expect(subject).to be_empty
+    end
+  end
 
 end

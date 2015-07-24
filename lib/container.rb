@@ -13,6 +13,10 @@ module Container
     @vehicles << vehicle
   end
 
+  def remove_vehicle
+    @vehicles.pop
+  end
+
   def full?
     @vehicles.count >= capacity
   end

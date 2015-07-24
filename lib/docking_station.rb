@@ -25,6 +25,10 @@ class DockingStation
     bikes << bike
   end
 
+  def greet_bike bike
+    bike.hello
+  end
+
   private
 
   attr_reader :bikes
